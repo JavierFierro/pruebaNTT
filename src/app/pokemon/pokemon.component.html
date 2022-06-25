@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <p>Listado de Pokemon</p>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <input [(ngModel)]="idPokemon" type="text" placeholder="Buscar" (keydown.enter)="getPokemonsById()" (input)="resetSearch()">
+                </div>
+            </div>
+        </div>
+        <div class="col-6 button-new">
+            <button class="button" (click)="showNewForm()">+ Nuevo</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <table>
+            <tbody>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Ataque</th>
+                <th>Defensa</th>
+                <th>Acciones</th>
+                <tr *ngFor="let i of requestService.pokemon">
+                    <td>{{i.name}}</td>
+                    <td><img src="{{i.image}}" height=100 width=100></td>
+                    <td>{{i.attack}}</td>
+                    <td>{{i.defense}}</td>
+                    <td><button class="button-edit" (click)="editPokemonById(i.id)"><i class="fa fa-pencil"></i></button>
+                        <button class="button-edit" (click)="deletePokemonById(i.id)"><i class="fa fa-trash"></i></button></td>
+                </tr>
+            </tbody>
+            
+        </table>
+    </div>
+</div>
+<br>
+<div class="container" *ngIf="showNew">
+    <h4 *ngIf="!edit">Nuevo Pokemon</h4>
+    <h4 *ngIf="edit">Editar Pokemon</h4>
+    <div class="row">
+
+        <div class="col-6">
+            <div class="row">
+                <label>Nombre: </label>
+                <input [(ngModel)]="pokemonName" type="text" placeholder="Name" >
+            </div>
+            <br>
+            <div class="row">
+                <label>Imagen: </label>
+                <input [(ngModel)]="pokemonImg" type="text" placeholder="URL" >
+            </div>
+            
+        </div>
+
+        <div class="col-6">
+            <div class="row">
+                <label>Ataque:  </label>
+                <label> 0 </label>
+                <input [(ngModel)]="pokemonAttack" type="range" placeholder="Attack" min="0" max="100" >
+                <label> 100 </label>
+            </div>
+            <br>
+            <div class="row">
+                <label>Defensa:  </label>
+                <label> 0 </label>
+                <input [(ngModel)]="pokemonDefense" type="range" placeholder="Defense" min="0" max="100" >
+                <label> 100 </label>
+            </div>
+            
+        </div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <button class="button" (click)="crearPokemon()">Guardar</button>
+            <button class="button" (click)="cancelForm()">Cancelar</button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,44 @@
+.container{
+    margin-top: 100px;
+}
+
+.button{
+    background-color: #5D3FD3;
+    border: none;
+    color: white;
+    margin: 4px 2px;
+    /* font-size: 30px; */
+    cursor: pointer;
+}
+
+.button-edit{
+    background-color: white;
+    border: none;
+    color: #5D3FD3;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button-new{
+    align-self: end;
+    text-align: right;
+}
+
+table{
+    width: 100%;
+    border: double;
+    text-align: center;
+}
+
+th, td{
+    border: double;
+}
+
+h4{
+    text-align: center;
+    border-bottom: double;
+}
+
+.col-12{
+    text-align: center;
+}
